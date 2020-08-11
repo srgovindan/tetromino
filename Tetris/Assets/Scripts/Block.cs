@@ -6,6 +6,7 @@ public class Block : MonoBehaviour
 {
     //Public variables
     public float fallSpeed = 0.9f;
+    public Vector3 rotationPoint;
 
     //Private variables
     private GridManager _gm;
@@ -44,11 +45,11 @@ public class Block : MonoBehaviour
         //Rotate block 90deg clockwise 
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.Rotate(new Vector3(0, 0, 90), Space.Self);
+            transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
             //Reverse the movement if it is not a valid move
             if (!_gm.ValidMove(transform))
             {
-                transform.Rotate(new Vector3(0, 0, -90), Space.Self);
+                transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
             }
         }
         
@@ -67,4 +68,5 @@ public class Block : MonoBehaviour
         }
         
     }
+
 }
