@@ -6,7 +6,7 @@ public class Block : MonoBehaviour
 {
     //Public variables
     public float fallSpeed = 0.9f;
-    
+
     //Private variables
     private float prevTime;
     
@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
     
     void Update()
     {
-        //Check for player inputs to move tetromino Left/Right
+        //Check for player inputs to move Tetromino Left/Right
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left;
