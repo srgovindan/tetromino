@@ -18,8 +18,6 @@ public class GridManager : MonoBehaviour
             int xPos = Mathf.RoundToInt(square.transform.position.x);
             int yPos = Mathf.RoundToInt(square.transform.position.y);
 
-            Debug.Log("X: " + xPos + ", Y: " + yPos);
-            
             //Check if the position of the square is outside the grid - return false
             if (xPos < 0 || xPos >= gridLength || yPos < 0 || yPos >= gridHeight)
             {
