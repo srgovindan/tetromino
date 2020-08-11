@@ -6,12 +6,11 @@ public class Block : MonoBehaviour
 {
     //Public variables
     public float fallSpeed = 0.9f;
+    public Vector3 rotationPoint;
 
     //Private variables
-    private float prevTime;
-    
-    //References
     private GridManager _gm;
+    private float prevTime;
     
     void Start()
     {
@@ -21,7 +20,9 @@ public class Block : MonoBehaviour
     
     void Update()
     {
-        //Check for player inputs to move Tetromino Left/Right
+        //Check for player input 
+        
+        //Move block to the left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left;
@@ -31,6 +32,7 @@ public class Block : MonoBehaviour
                 transform.position += Vector3.right;
             }
         }
+        //Move block to the right
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.position += Vector3.right;
@@ -40,6 +42,12 @@ public class Block : MonoBehaviour
                 transform.position += Vector3.left;
             }
         }
+        //Rotate block 90deg clockwise 
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            transform.Rotate(-Vector3.forward * 90);
+        }
+        
 
         //Make the block fall based on the fall speed
         //Block falls faster when the down arrow key is pressed
