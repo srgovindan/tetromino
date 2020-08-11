@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     public void SpawnBlock()
     {
         //Instantiate the block prefab
-        GameObject spawnedBlock = Instantiate<GameObject>(TetrisBlocksPrefabs[Random.Range(0, TetrisBlocksPrefabs.Length)]);
+        GameObject spawnedBlock = Instantiate(TetrisBlocksPrefabs[Random.Range(0, TetrisBlocksPrefabs.Length)]);
         //Move the block to the spawner location
         spawnedBlock.transform.position = transform.position;
     }

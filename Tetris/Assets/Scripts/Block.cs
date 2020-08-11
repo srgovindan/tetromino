@@ -29,7 +29,7 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.left;
             //Reverse the movement if it is not a valid move
-            if (!_gm.ValidMove(transform))
+            if (!_gm.CheckIfValidMove(transform))
             {
                 transform.position += Vector3.right;
             }
@@ -39,7 +39,7 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.right;
             //Reverse the movement if it is not a valid move
-            if (!_gm.ValidMove(transform))
+            if (!_gm.CheckIfValidMove(transform))
             {
                 transform.position += Vector3.left;
             }
@@ -49,7 +49,7 @@ public class Block : MonoBehaviour
         {
             transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, 90);
             //Reverse the movement if it is not a valid move
-            if (!_gm.ValidMove(transform))
+            if (!_gm.CheckIfValidMove(transform))
             {
                 transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
@@ -62,10 +62,12 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.down;
             //The block has hit an occupied space in the grid below it
-            if (!_gm.ValidMove(transform))
+            if (!_gm.CheckIfValidMove(transform))
             {
                 //Reverse the movement 
                 transform.position += Vector3.up;
+                //Add the block to the grid
+                _gm.AddBlockToGrid(transform);
                 //Disable this block script
                 this.enabled = false;
                 //Spawn a new block 
