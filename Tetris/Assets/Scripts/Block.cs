@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    //Public variables
+    public float fallSpeed = 0.9f;
+    
+    //Private variables
+    private float prevTime;
+    
     void Start()
     {
         
@@ -20,5 +26,14 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.right;
         }
+
+        //Make the block fall based on the fall speed
+        //Block falls faster when the down arrow key is pressed
+        if (Time.time - prevTime >= (Input.GetKey(KeyCode.DownArrow)? fallSpeed/10 : fallSpeed))
+        {
+            transform.position += Vector3.down;
+            prevTime = Time.time;
+        }
+        
     }
 }
