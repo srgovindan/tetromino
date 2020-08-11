@@ -63,7 +63,6 @@ public class GridManager : MonoBehaviour
     
     void ClearLine(int y)
     {
-        Debug.Log("Trying to clear line " + y);
         //Delete each square GameObject in the line & clear the corresponding grid reference 
         for (int x = 0; x < gridWidth; x++)
         {
