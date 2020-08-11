@@ -10,12 +10,14 @@ public class Block : MonoBehaviour
 
     //Private variables
     private GridManager _gm;
+    private SpawnManager _sm;
     private float prevTime;
     
     void Start()
     {
-        //Find the reference to the GridManager
+        //Find the reference to the GridManager & SpawnManager
         _gm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
+        _sm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
     }
     
     void Update()
@@ -59,10 +61,15 @@ public class Block : MonoBehaviour
         if (Time.time - prevTime >= (Input.GetKey(KeyCode.DownArrow)? fallSpeed/10 : fallSpeed))
         {
             transform.position += Vector3.down;
-            //Reverse the movement if it is not a valid move
+            //The block has hit an occupied space in the grid below it
             if (!_gm.ValidMove(transform))
             {
+                //Reverse the movement 
                 transform.position += Vector3.up;
+                //Disable this block script
+                this.enabled = false;
+                //Spawn a new block 
+                _sm.SpawnBlock();
             }
             prevTime = Time.time;
         }

@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Public variables
+    public GameObject[] TetrisBlocksPrefabs;
+
+    //Private variables
+    private List<GameObject> _tetrisBlocksBag;
+  
     void Start()
     {
-        
+        SpawnBlock();
     }
 
-    // Update is called once per frame
-    void Update()
+    //This function may be called from other scripts to spawn a tetris block from the spawner location
+    public void SpawnBlock()
     {
-        
+        //Instantiate the block prefab
+        GameObject spawnedBlock = Instantiate<GameObject>(TetrisBlocksPrefabs[Random.Range(0, TetrisBlocksPrefabs.Length)]);
+        //Move the block to the spawner location
+        spawnedBlock.transform.position = transform.position;
     }
+    
 }

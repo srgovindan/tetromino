@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 128549160}
   m_Layer: 0
   m_Name: SpawnManager
-  m_TagString: Untagged
+  m_TagString: SpawnManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,6 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd79a451d80934142a47b6e7a30da5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TetrisBlocksPrefabs:
+  - {fileID: 185843855986451781, guid: e5b41000a466b47f5a8992b4f5049e7c, type: 3}
+  - {fileID: 761759836724198777, guid: cd099f20a65b6438cbeb217e66e4355a, type: 3}
+  - {fileID: 8817765781323584257, guid: 8a7c69ead9bf549aaa7b2e06af189230, type: 3}
+  - {fileID: 4559207168299551440, guid: d5c138f62e5ba4ff8820bd1d9e745a59, type: 3}
+  - {fileID: 4964210942349973753, guid: 6ca4ed38f7c724d3787f8e8a600fe205, type: 3}
+  - {fileID: 5255997500744157294, guid: 664a4da0ac01a4dcc849a8f537007d17, type: 3}
+  - {fileID: 6296775709718438661, guid: c716526be321f4e2192105497996d4f9, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
