@@ -6,19 +6,29 @@ public class GridManager : MonoBehaviour
 {
     public int gridHeight = 20;
     public int gridLength = 10;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    
+    
+    public bool ValidMove(Transform block)
     {
+        //Check is each square in the Tetromino block is moving to a valid location in the grid
+        foreach (Transform square in block)
+        {
+            //Get the x,y positions as int
+            int xPos = Mathf.RoundToInt(square.transform.position.x);
+            int yPos = Mathf.RoundToInt(square.transform.position.y);
+            
+            //Check if the position of the square is outside the grid - return false
+            if (xPos < 0 || xPos > gridLength || yPos < 0 || yPos > gridHeight)
+            {
+                return false;
+            }
+        }
         
+        //The move is valid - return true
+        return true;
     }
+    
     
     
 }
