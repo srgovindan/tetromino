@@ -45,11 +45,11 @@ public class Block : MonoBehaviour
         //Rotate block 90deg clockwise 
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, 90);
+            transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, 90);
             //Reverse the movement if it is not a valid move
             if (!_gm.ValidMove(transform))
             {
-                transform.RotateAround(transform.TransformPoint(rotationPoint), Vector3.forward, -90);
+                transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
         }
         
