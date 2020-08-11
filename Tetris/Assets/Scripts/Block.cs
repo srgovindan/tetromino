@@ -64,13 +64,13 @@ public class Block : MonoBehaviour
             //The block has hit an occupied space in the grid below it
             if (!_gm.CheckIfValidMove(transform))
             {
-                //Reverse the movement 
+                //Reverse the movement & add the block to the grid
                 transform.position += Vector3.up;
-                //Add the block to the grid
                 _gm.AddBlockToGrid(transform);
-                //Disable this block script
+                _gm.CheckForLineClear();
+                
+                //Disable this block script & spawn a new block
                 this.enabled = false;
-                //Spawn a new block 
                 _sm.SpawnBlock();
             }
             prevTime = Time.time;
