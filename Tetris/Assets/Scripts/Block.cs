@@ -83,7 +83,7 @@ public class Block : MonoBehaviour
                 //If the game is not over, spawn next block
                 if (!_gam.IsGameOver(transform))
                 {
-                    _spm.SpawnBlock();
+                    _spm.SpawnBlockFromBag();
                 }
             }
             prevTime = Time.time;
