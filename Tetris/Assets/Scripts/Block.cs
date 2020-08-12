@@ -9,14 +9,16 @@ public class Block : MonoBehaviour
     public Vector3 rotationPoint;
 
     //Private variables
-    private GridManager _gm;
+    private GameManager _gam;
+    private GridManager _grm;
     private SpawnManager _spm;
     private float prevTime;
     
     void Start()
     {
         //Find references to Managers
-        _gm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
+        _gam = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        _grm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
     }
     
@@ -29,7 +31,7 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.left;
             //Reverse the movement if it is not a valid move
-            if (!_gm.CheckIfValidMove(transform))
+            if (!_grm.CheckIfValidMove(transform))
             {
                 transform.position += Vector3.right;
             }
@@ -39,7 +41,7 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.right;
             //Reverse the movement if it is not a valid move
-            if (!_gm.CheckIfValidMove(transform))
+            if (!_grm.CheckIfValidMove(transform))
             {
                 transform.position += Vector3.left;
             }
@@ -49,7 +51,7 @@ public class Block : MonoBehaviour
         {
             transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, 90);
             //Reverse the movement if it is not a valid move
-            if (!_gm.CheckIfValidMove(transform))
+            if (!_grm.CheckIfValidMove(transform))
             {
                 transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
@@ -61,17 +63,17 @@ public class Block : MonoBehaviour
         {
             transform.position += Vector3.down;
             //The block has hit an occupied space in the grid below it
-            if (!_gm.CheckIfValidMove(transform))
+            if (!_grm.CheckIfValidMove(transform))
             {
                 //Reverse the movement & add the block to the grid
                 transform.position += Vector3.up;
-                _gm.AddBlockToGrid(transform);
-                _gm.CheckForLineClear();
+                _grm.AddBlockToGrid(transform);
+                _grm.CheckForLineClear();
                 
                 this.enabled = false;
                 
                 //If the game is not over, spawn next block
-                if (!_gm.IsGameOver(transform))
+                if (!_gam.IsGameOver(transform))
                 {
                     _spm.SpawnBlock();
                 }

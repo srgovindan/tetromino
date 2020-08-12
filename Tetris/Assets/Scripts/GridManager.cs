@@ -10,14 +10,10 @@ public class GridManager : MonoBehaviour
     public int gridWidth = 10;
     
     //Private variables
-    private SpawnManager _spm;
     private Transform[,] grid;
 
     void Start()
     {
-        //Find references to Managers
-        _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
-        
         //Initialize grid
         grid = new Transform[gridWidth, gridHeight];
     }
@@ -119,25 +115,5 @@ public class GridManager : MonoBehaviour
         //The move is valid - return true
         return true;
     }
-
-    public bool IsGameOver(Transform block)
-    {
-        foreach (Transform square in block)
-        {
-            //Get the x,y positions as int
-            int xPos = Mathf.RoundToInt(square.transform.position.x);
-            int yPos = Mathf.RoundToInt(square.transform.position.y);
-            
-           //Check if any square has topped out past the spawner location at the top of the grid - return true
-           if (yPos >= _spm.gameObject.transform.position.y)
-           {
-               Debug.Log("GAME OVER");
-               return true;
-               //todo implement game over ui 
-           }
-        }
-
-        //None of the squares has topped out - return false
-        return false;
-    }
+    
 }
