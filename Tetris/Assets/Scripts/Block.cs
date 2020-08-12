@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// INTENT: This script allows the player to control falling Tetromino blocks and deals with the life cycle of the block.
+/// USAGE: This script is placed on each Tetromino block prefab.
+/// </summary>
 public class Block : MonoBehaviour
 {
     //Public variables

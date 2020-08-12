@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
+/// <summary>
+/// INTENT: The GameManager keeps track of the game state, checks for the game over condition & keeps track of the
+/// global game variables.
+/// USAGE: Place this script on the GameManager GameObject.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     //Public variables 

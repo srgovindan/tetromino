@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// INTENT: The SpawnManager shuffles and deals Tetrominos from a bag of blocks and updates the next block preview UI.
+/// USAGE: Place this script on the SpawnManager GameObject.
+/// </summary>
 public class SpawnManager : MonoBehaviour
 {
     //Public variables

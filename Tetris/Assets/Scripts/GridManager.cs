@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// INTENT: The GridManager keeps track of the grid state, checks for cleared lines & valid moves.
+/// USAGE: Place this script on the GridManager GameObject.
+/// </summary>
 public class GridManager : MonoBehaviour
 {
     //Public variables

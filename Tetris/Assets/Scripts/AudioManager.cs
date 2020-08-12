@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-
 /// <summary>
-/// This is a simple audio manager that lets you assign a set of tracks to an array in the inspector and play them from code.
-/// You can play a clip once or on loop. 
-/// Call a track using its index in the array, eg: PlayAudioClip(0) or PlayAudioLoop(4)
-/// You can also play a random clip from a range in the array, eg: PlayAudioClip(0,2) will play either the 0, 1, or 2 tracks.
-/// Stop all audio using StopAllAudio()
+/// INTENT: This script is a basic audio manager that allows you to play a BGM track on start as well as SFX clips
+/// directly from a script.
+/// USAGE: Place this script on the AudioManager GameObject. Attach two audio sources to the AudioManager & connect
+/// the references in the inspector. Add SFX clips & BGM tracks through the inspector & call the appropriate function
+/// to play them from a script.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {

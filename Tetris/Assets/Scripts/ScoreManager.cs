@@ -5,6 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// INTENT: The ScoreManager keeps track of the score, level & lines cleared & updates all of the relevant UI.
+/// USAGE: Place this script on the ScoreManager GameObject.
+/// </summary>
 public class ScoreManager : MonoBehaviour
 {
     //Public variables
