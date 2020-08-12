@@ -65,15 +65,19 @@ public class ScoreManager : MonoBehaviour
                 Debug.Log("Something went wrong during the score calculation!");
                 break;
         }
-        //Update the score & lines
-        lines += numLines;
+        //Update the score
         score += scoreToAdd;
 
-        if (isLevelUp())
+        //Update the lines cleared
+        for (int i = 0; i < numLines; i++)
         {
-            LevelUp();
+            lines++;
+            if (isLevelUp())
+            {
+                LevelUp();
+            }
         }
-        
+
         UpdateUI();
     }
 

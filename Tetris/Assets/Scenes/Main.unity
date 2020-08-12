@@ -166,12 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 03efe15a3b5aa4601a46d545694eb75f, type: 3}
-  - {fileID: 8300000, guid: 41417185cc3774ba08a9221445d83a56, type: 3}
-  - {fileID: 8300000, guid: 13b46473b91254d94a82df3f4cca8b10, type: 3}
-  - {fileID: 8300000, guid: 2451007e321da4a1d8070dbbf6be85ed, type: 3}
-  - {fileID: 8300000, guid: 0eba94f635114412584c9ae455315a8f, type: 3}
-  - {fileID: 8300000, guid: 639d0ccce5f624ae2ab1d43204815c14, type: 3}
+  - {fileID: 8300000, guid: d47961741c9e343c1a107466d966a561, type: 3}
+  - {fileID: 8300000, guid: b829d550aee064ce99343af76c252f85, type: 3}
+  - {fileID: 8300000, guid: e41d7e06b2f6a4433a58e40b70c52742, type: 3}
+  - {fileID: 8300000, guid: b1343598e2f224438a66f84bed07aeca, type: 3}
+  - {fileID: 8300000, guid: 0553981c61e414a93b1b8d25af9842a6, type: 3}
+  - {fileID: 8300000, guid: 18d2d2004fd4040ad9b2986626d6ff47, type: 3}
 --- !u!82 &32996924
 AudioSource:
   m_ObjectHideFlags: 0
