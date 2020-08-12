@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class GameManager : MonoBehaviour
         playing,
         endscreen
     }
+    [SerializeField]
     private GameState _currentGameState;
     private SpawnManager _spm;
+    private ScoreManager _scm;
 
     void Start()
     {
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.playing;
         //Find references to Managers
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+        _scm = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
     }
     
     void Update()
@@ -28,7 +32,7 @@ public class GameManager : MonoBehaviour
         switch (_currentGameState)
         {
             case GameState.playing:
-                //stuff
+                //Game is running
             break;
             
             case GameState.endscreen:
@@ -68,6 +72,9 @@ public class GameManager : MonoBehaviour
     {
         //Set CurrentGameState to EndScreen state
         _currentGameState = GameState.endscreen;
+        
+        //Call EndGame UI
+        
         //todo call end game ui
     }
 }
