@@ -10,14 +10,14 @@ public class Block : MonoBehaviour
 
     //Private variables
     private GridManager _gm;
-    private SpawnManager _sm;
+    private SpawnManager _spm;
     private float prevTime;
     
     void Start()
     {
-        //Find the reference to the GridManager & SpawnManager
+        //Find references to Managers
         _gm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
-        _sm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+        _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
     }
     
     void Update()
@@ -54,7 +54,6 @@ public class Block : MonoBehaviour
                 transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
         }
-        
 
         //Make the block fall based on the fall speed
         //Block falls faster when the down arrow key is pressed
@@ -69,9 +68,13 @@ public class Block : MonoBehaviour
                 _gm.AddBlockToGrid(transform);
                 _gm.CheckForLineClear();
                 
-                //Disable this block script & spawn a new block
                 this.enabled = false;
-                _sm.SpawnBlock();
+                
+                //If the game is not over, spawn next block
+                if (!_gm.IsGameOver(transform))
+                {
+                    _spm.SpawnBlock();
+                }
             }
             prevTime = Time.time;
         }

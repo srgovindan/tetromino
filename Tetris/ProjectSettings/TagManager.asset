@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GridManager
   - SpawnManager
+  - ScoreManager
   layers:
   - Default
   - TransparentFX
