@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private GameState _currentGameState;
     private SpawnManager _spm;
     private ScoreManager _scm;
+    private AudioManager _am;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         //Find references to Managers
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
         _scm = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
     
     void Update()
@@ -79,6 +81,9 @@ public class GameManager : MonoBehaviour
         //Set CurrentGameState to EndScreen state
         _currentGameState = GameState.endscreen;
         
+        //Play SFX
+        _am.PlayAudioClip(3);
+
         //Call EndGame UI
         _scm.DisplayEndGameUI();
     }

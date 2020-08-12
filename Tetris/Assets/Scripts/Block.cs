@@ -11,6 +11,7 @@ public class Block : MonoBehaviour
     private GameManager _gam;
     private GridManager _grm;
     private SpawnManager _spm;
+    private AudioManager _am;
     private float fallSpeed;
     private float prevTime;
     
@@ -20,6 +21,7 @@ public class Block : MonoBehaviour
         _gam = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _grm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         
         //Get the fall speed from the Game Manager
         fallSpeed = _gam.BlockFallSpeed;
@@ -58,6 +60,9 @@ public class Block : MonoBehaviour
             {
                 transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
+            
+            //Play SFX
+            _am.PlayAudioClip(4);
         }
         //Hard drop 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -77,6 +82,8 @@ public class Block : MonoBehaviour
                 transform.position += Vector3.up;
                 _grm.AddBlockToGrid(transform);
                 _grm.CheckForLineClear();
+                //Play SFX
+                _am.PlayAudioClip(0);
                 
                 this.enabled = false;
                 

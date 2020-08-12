@@ -8,6 +8,7 @@ TagManager:
   - SpawnManager
   - ScoreManager
   - GameManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

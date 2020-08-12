@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
 
     //Private variables
     private GameManager _gam;
+    private AudioManager _am;
     private int score;
     private int level;
     private int lines;
@@ -25,6 +26,7 @@ public class ScoreManager : MonoBehaviour
     {
         //Find references to Managers
         _gam = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     void UpdateUI()
@@ -92,7 +94,9 @@ public class ScoreManager : MonoBehaviour
         {
             _gam.BlockFallSpeed -= _gam.FallSpeedChange;
         }
-
+        
+        //Play SFX
+        _am.PlayAudioClip(5);
     }
     
 }

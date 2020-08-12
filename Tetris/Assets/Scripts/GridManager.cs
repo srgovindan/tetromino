@@ -11,12 +11,14 @@ public class GridManager : MonoBehaviour
     
     //Private variables
     private ScoreManager _scm;
+    private AudioManager _am;
     private Transform[,] grid;
 
     void Start()
     {
         //Find references to Managers
         _scm = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+        _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         
         //Initialize grid
         grid = new Transform[gridWidth, gridHeight];
@@ -55,6 +57,16 @@ public class GridManager : MonoBehaviour
         if (numLinesCleared != 0)
         {
             _scm.UpdateScore(numLinesCleared);
+            
+            //Play SFX based on number of lines cleared
+            if (numLinesCleared == 4)
+            {
+                _am.PlayAudioClip(2);
+            }
+            else
+            {
+                _am.PlayAudioClip(1);
+            }
         }
     }
 
