@@ -58,7 +58,8 @@ public class SpawnManager : MonoBehaviour
         
         UpdateBlockPreviewUI();
     }
-
+    
+    
     void UpdateBlockPreviewUI()
     {
         //Clear the preview block
@@ -74,7 +75,6 @@ public class SpawnManager : MonoBehaviour
         _previewBlock.GetComponent<Block>().enabled = false;
         //Child the preview block to the preview window transform
         _previewBlock.transform.position = BlockPreviewTransform.position - _previewBlock.GetComponent<Block>().rotationPoint;
-
     }
     
 }

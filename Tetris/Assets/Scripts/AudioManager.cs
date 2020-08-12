@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //This is a simple audio manager that lets you assign a set of tracks to an array in the inspector and play them from code.
 //You can play a clip once or on loop. 
@@ -11,30 +13,46 @@ using UnityEngine;
 //Original script by @srgovindan
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager AM;
+    //Public variables
+    public AudioSource _sfxAudioSource;
+    [Range(0, 1)] public float sfxVolume = 0.5f;
     public List<AudioClip> audioClips;
-    private AudioSource _audioSource;
-
-    void Awake()
+    public AudioSource _BGMAudioSource;
+    [Range(0, 1)] public float BGMVolume = 0.2f;
+    public List<AudioClip> BGMClips;
+    
+    void Start()
     {
-        // PSUEDO-SINGLETON
-        // This gameobject does NOT persist on load
-        if (AM == null)
+        //Play a random BGM track if the list is not empty
+        if (BGMClips != null)
         {
-            //DontDestroyOnLoad(gameObject);
-            AM = this;
-            _audioSource = GetComponent<AudioSource>();
-        }
-        else
-        {
-            Destroy(gameObject);
+            PlayBGM(0, BGMClips.Count - 1, BGMVolume);
         }
     }
+    
+    public void PlayBGM(int i, float volume=1f)
+    {
+        _BGMAudioSource.loop = true;
+        _BGMAudioSource.clip = BGMClips[i];
+        _BGMAudioSource.volume = volume;
+        _BGMAudioSource.Play();
+    }
 
+    //Random clip from range
+    public void PlayBGM(int i, int j, float volume = 1f)
+    {
+        int k = Random.Range(i, j + 1);
+        _BGMAudioSource.loop = true;
+        _BGMAudioSource.clip = BGMClips[k];
+        _BGMAudioSource.volume = volume;
+        _BGMAudioSource.Play();
+    }
+
+    
     public void PlayAudioClip(int i, float volume=1f)
     {
         //Debug.Log("Playing Audio Clip " + i);
-        _audioSource.PlayOneShot(audioClips[i],volume);
+        _sfxAudioSource.PlayOneShot(audioClips[i],volume);
     }
        
     //Random clip from range
@@ -42,16 +60,17 @@ public class AudioManager : MonoBehaviour
     {
         int k = Random.Range(i, j + 1);
         //Debug.Log("Playing Audio Clip " + i);
-        _audioSource.PlayOneShot(audioClips[k],volume);
+        _sfxAudioSource.PlayOneShot(audioClips[k],volume);
     }
+    
     
     public void PlayAudioLoop(int i, float volume=1f)
     {
         //Debug.Log("Playing Audio Clip " + i);
-        _audioSource.loop = true;
-        _audioSource.clip = audioClips[i];
-        _audioSource.volume = volume;
-        _audioSource.Play();
+        _sfxAudioSource.loop = true;
+        _sfxAudioSource.clip = audioClips[i];
+        _sfxAudioSource.volume = volume;
+        _sfxAudioSource.Play();
     }
        
     //Random clip from range
@@ -59,14 +78,16 @@ public class AudioManager : MonoBehaviour
     {
         int k = Random.Range(i, j + 1);
         //Debug.Log("Playing Audio Clip " + i);
-        _audioSource.loop = true;
-        _audioSource.clip = audioClips[k];
-        _audioSource.volume = volume;
-        _audioSource.Play();
+        _sfxAudioSource.loop = true;
+        _sfxAudioSource.clip = audioClips[k];
+        _sfxAudioSource.volume = volume;
+        _sfxAudioSource.Play();
     }
 
+    
     public void StopAllAudio()
     {
-        _audioSource.Stop();
+        _BGMAudioSource.Stop();
+        _sfxAudioSource.Stop();
     }
 }

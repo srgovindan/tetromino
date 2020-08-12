@@ -95,7 +95,6 @@ public class Block : MonoBehaviour
             }
             prevTime = Time.time;
         }
-        
     }
 
 }

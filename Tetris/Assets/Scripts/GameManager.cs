@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
         //Set CurrentGameState to EndScreen state
         _currentGameState = GameState.endscreen;
         
+        //Stop BGM 
+        _am.StopAllAudio();
+        
         //Play SFX
         _am.PlayAudioClip(3);
 
