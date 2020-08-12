@@ -282,6 +282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773f2c03bec634f69908804fa96aa984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlockFallSpeed: 0.9
+  MaximumFallSpeed: 0.1
+  FallSpeedChange: 0.1
+  LinesToLevelUp: 10
   _currentGameState: 0
 --- !u!4 &145240551
 Transform:

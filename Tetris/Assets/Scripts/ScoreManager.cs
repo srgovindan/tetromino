@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,9 +16,16 @@ public class ScoreManager : MonoBehaviour
     public Image EndGamePanel;
 
     //Private variables
+    private GameManager _gam;
     private int score;
     private int level;
     private int lines;
+
+    void Start()
+    {
+        //Find references to Managers
+        _gam = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     void UpdateUI()
     {
@@ -58,9 +66,33 @@ public class ScoreManager : MonoBehaviour
         //Update the score & lines
         lines += numLines;
         score += scoreToAdd;
+
+        if (isLevelUp())
+        {
+            LevelUp();
+        }
         
-        //todo CheckAndUpdateLevel()
         UpdateUI();
+    }
+
+    bool isLevelUp()
+    {
+        if (lines % _gam.LinesToLevelUp == 0)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    void LevelUp()
+    {
+        level++;
+        if (_gam.BlockFallSpeed > _gam.MaximumFallSpeed)
+        {
+            _gam.BlockFallSpeed -= _gam.FallSpeedChange;
+        }
+
     }
     
 }

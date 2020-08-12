@@ -6,6 +6,11 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
+    //Public variables 
+    public float BlockFallSpeed = 0.9f;
+    public float MaximumFallSpeed = 0.1f;
+    public float FallSpeedChange = 0.1f;
+    public int LinesToLevelUp = 10;
     
     //Private variables
     private enum GameState

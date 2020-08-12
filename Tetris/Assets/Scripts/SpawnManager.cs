@@ -12,16 +12,31 @@ public class SpawnManager : MonoBehaviour
   
     void Start()
     {
+        //FillBagWithBlocks();
         SpawnBlock();
+        //SpawnBlockFromBag();
     }
 
-    //This function may be called from other scripts to spawn a tetris block from the spawner location
+    //Spawns a tetris block from the spawner location
     public void SpawnBlock()
     {
         //Instantiate the block prefab
         GameObject spawnedBlock = Instantiate(TetrisBlocksPrefabs[Random.Range(0, TetrisBlocksPrefabs.Length)]);
         //Move the block to the spawner location
         spawnedBlock.transform.position = transform.position;
+    }
+
+    void FillBagWithBlocks()
+    {
+        foreach (var block in TetrisBlocksPrefabs)
+        {
+            _tetrisBlocksBag.Add(block);
+        }
+    }
+
+    void SpawnBlockFromBag()
+    {
+        
     }
     
 }
