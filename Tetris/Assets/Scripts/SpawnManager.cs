@@ -73,7 +73,7 @@ public class SpawnManager : MonoBehaviour
         //Disable the block script 
         _previewBlock.GetComponent<Block>().enabled = false;
         //Child the preview block to the preview window transform
-        _previewBlock.transform.position = BlockPreviewTransform.position;
+        _previewBlock.transform.position = BlockPreviewTransform.position - _previewBlock.GetComponent<Block>().rotationPoint;
 
     }
     
