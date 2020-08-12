@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.endscreen;
         
         //Call EndGame UI
-        
-        //todo call end game ui
+        _scm.DisplayEndGameUI();
     }
 }
