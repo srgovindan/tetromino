@@ -30,9 +30,34 @@ public class ScoreManager : MonoBehaviour
         RestartInfoTextbox.text = "Press the 'R' key to restart.";
     }
 
-    public void ScoreBasedOnLines(int numLines)
+    public void UpdateScore(int numLines)
     {
+        //Calculate the score to add based on number of cleared lines
+        int scoreToAdd = 0;
+        switch (numLines)
+        {
+            case 1:
+                scoreToAdd = 50 * (level + 1);
+                break;
+            case 2:
+                scoreToAdd = 150 * (level + 1);
+                break;
+            case 3:
+                scoreToAdd = 350 * (level + 1);
+                break;
+            case 4:
+                scoreToAdd = 1000 * (level + 1);
+                break;
+            default:
+                Debug.Log("Something went wrong during the score calculation!");
+                break;
+        }
+        //Update the score & lines
+        lines += numLines;
+        score += scoreToAdd;
         
+        //todo CheckAndUpdateLevel()
+        UpdateUI();
     }
     
 }

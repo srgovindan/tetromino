@@ -10,10 +10,14 @@ public class GridManager : MonoBehaviour
     public int gridWidth = 10;
     
     //Private variables
+    private ScoreManager _scm;
     private Transform[,] grid;
 
     void Start()
     {
+        //Find references to Managers
+        _scm = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+        
         //Initialize grid
         grid = new Transform[gridWidth, gridHeight];
     }
@@ -33,14 +37,24 @@ public class GridManager : MonoBehaviour
 
     public void CheckForLineClear()
     {
+        //Keep track of the number of lines 
+        int numLinesCleared = 0;
+        
         //For each row in the grid, starting from the top
         for (int y = gridHeight - 1; y >= 0; y--)
         {
             if (HasLine(y))
             {
+                numLinesCleared++;
                 ClearLine(y);
                 MoveRowsDown(y);
             }
+        }
+        
+        //Score if there were lines cleared
+        if (numLinesCleared != 0)
+        {
+            _scm.UpdateScore(numLinesCleared);
         }
     }
 

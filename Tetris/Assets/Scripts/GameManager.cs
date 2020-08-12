@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         //Initialize the game state
         _currentGameState = GameState.playing;
+        
         //Find references to Managers
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
         _scm = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
