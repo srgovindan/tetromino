@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text LinesTextbox;
     public TMP_Text EndGameTextbox;
     public TMP_Text RestartInfoTextbox;
+    public Image EndGamePanel;
 
     //Private variables
     private int score;
@@ -26,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     public void DisplayEndGameUI()
     {
+        EndGamePanel.enabled = true;
         EndGameTextbox.text = "GAME OVER!";
         RestartInfoTextbox.text = "Press the 'R' key to restart.";
     }
