@@ -5,13 +5,13 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     //Public variables
-    public float fallSpeed = 0.9f;
     public Vector3 rotationPoint;
 
     //Private variables
     private GameManager _gam;
     private GridManager _grm;
     private SpawnManager _spm;
+    private float fallSpeed;
     private float prevTime;
     
     void Start()
@@ -20,6 +20,9 @@ public class Block : MonoBehaviour
         _gam = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _grm = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         _spm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+        
+        //Get the fall speed from the Game Manager
+        fallSpeed = _gam.BlockFallSpeed;
     }
     
     void Update()
@@ -55,6 +58,11 @@ public class Block : MonoBehaviour
             {
                 transform.RotateAround(transform.TransformPoint(rotationPoint), -Vector3.forward, -90);
             }
+        }
+        //Hard drop 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fallSpeed = 0f;
         }
 
         //Make the block fall based on the fall speed
