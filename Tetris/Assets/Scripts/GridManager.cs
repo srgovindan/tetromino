@@ -24,6 +24,10 @@ public class GridManager : MonoBehaviour
         grid = new Transform[gridWidth, gridHeight];
     }
 
+    /// <summary>
+    /// Adds a block to the grid array once it has landed to keep track of the occupied grid spaces.
+    /// </summary>
+    /// <param name="block"></param>
     public void AddBlockToGrid(Transform block)
     {
         foreach (Transform square in block)
@@ -37,6 +41,9 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if any lines have been cleared after a block has landed.
+    /// </summary>
     public void CheckForLineClear()
     {
         //Keep track of the number of lines 
@@ -69,8 +76,13 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-
-
+    
+    /// <summary>
+    /// Checks if a given row has a complete line.
+    /// Returns true/false.
+    /// </summary>
+    /// <param name="y"></param>
+    /// <returns></returns>
     bool HasLine(int y)
     {
         //Check if each cell is occupied by a square
@@ -87,6 +99,10 @@ public class GridManager : MonoBehaviour
         return true;
     }
     
+    /// <summary>
+    /// Clears a line of Tetromino squares from the grid array.
+    /// </summary>
+    /// <param name="y"></param>
     void ClearLine(int y)
     {
         //Delete each square GameObject in the line & clear the corresponding grid reference 
@@ -97,6 +113,10 @@ public class GridManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Moves all lines above the given row down by one.
+    /// </summary>
+    /// <param name="clearedRow"></param>
     void MoveRowsDown(int clearedRow)
     {
         //Move each row above the cleared row down by one 
@@ -116,6 +136,12 @@ public class GridManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Checks if each square in a given Tetromnio block is moving to a valid space within the grid boundaries.
+    /// Returns true/false.
+    /// </summary>
+    /// <param name="block"></param>
+    /// <returns></returns>
     public bool CheckIfValidMove(Transform block)
     {
         //Check if each square in the Tetromino block is moving outside the bounds of the grid

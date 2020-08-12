@@ -29,6 +29,9 @@ public class ScoreManager : MonoBehaviour
         _am = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
+    /// <summary>
+    /// Updates all the UI with the current score, level & lines cleared values.
+    /// </summary>
     void UpdateUI()
     {
         ScoreTextbox.text = score.ToString();
@@ -36,6 +39,9 @@ public class ScoreManager : MonoBehaviour
         LinesTextbox.text = lines.ToString();
     }
 
+    /// <summary>
+    /// Displays the Game Over UI.
+    /// </summary>
     public void DisplayEndGameUI()
     {
         EndGamePanel.enabled = true;
@@ -43,6 +49,11 @@ public class ScoreManager : MonoBehaviour
         RestartInfoTextbox.text = "Press the 'R' key to restart.";
     }
 
+    /// <summary>
+    /// Updates the score, level & lines cleared values based on the number of lines cleared,
+    /// then updates the UI with the new values.
+    /// </summary>
+    /// <param name="numLines"></param>
     public void UpdateScore(int numLines)
     {
         //Calculate the score to add based on number of cleared lines
@@ -81,6 +92,11 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
+    /// <summary>
+    /// Checks if the player has cleared enough lines to level up.
+    /// Returns true/false.
+    /// </summary>
+    /// <returns></returns>
     bool isLevelUp()
     {
         if (lines % _gam.LinesToLevelUp == 0)
@@ -91,6 +107,9 @@ public class ScoreManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Increases the level of the game & the fall speed of the blocks.
+    /// </summary>
     void LevelUp()
     {
         level++;

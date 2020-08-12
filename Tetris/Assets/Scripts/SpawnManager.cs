@@ -24,6 +24,9 @@ public class SpawnManager : MonoBehaviour
         SpawnBlockFromBag();
     }
 
+    /// <summary>
+    /// Fills a bag with one of each Tetromino for the game to spawn blocks from.
+    /// </summary>
     void FillBagWithBlocks()
     {
         //Create a temp list of all the blocks
@@ -42,7 +45,10 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    //Spawns a block at the spawner location from the bag of pieces
+    /// <summary>
+    /// Spawns a block from the bag and instantiates it at the SpawnManager location,
+    /// then updates the next block preview.
+    /// </summary>
     public void SpawnBlockFromBag()
     {
         if (_tetrisBlocksBag.Count == 1)
@@ -59,7 +65,9 @@ public class SpawnManager : MonoBehaviour
         UpdateBlockPreviewUI();
     }
     
-    
+    /// <summary>
+    /// Updates the preview window with the next block coming up from the bag.
+    /// </summary>
     void UpdateBlockPreviewUI()
     {
         //Clear the preview block

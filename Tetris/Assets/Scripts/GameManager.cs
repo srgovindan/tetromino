@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.playing:
                 //Game is running
-            break;
+                break;
             
             case GameState.endscreen:
                 //Reset the game when the R key is pressed
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
-            break;
+                break;
             
             default:
                 Debug.Log("Game Manager state machine broke!");
@@ -57,6 +57,12 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Checks if a block has topped out the grid, thus ending the game.
+    /// Returns true/false.
+    /// </summary>
+    /// <param name="block"></param>
+    /// <returns></returns>
     public bool IsGameOver(Transform block)
     {
         foreach (Transform square in block)
@@ -76,6 +82,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Stops the current game and displays the End Screen.
+    /// </summary>
     void EndCurrentGame()
     {
         //Set CurrentGameState to EndScreen state
