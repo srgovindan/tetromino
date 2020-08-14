@@ -1,6 +1,7 @@
 # Tetromino
 
 A remake of the classic arcade game Tetris created in Unity.
+Placeholder BGM & SFX courtesy of the original Tetris (NES) game.
 
 ## In-Game Controls
 
